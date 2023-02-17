@@ -17,77 +17,54 @@ library(tidyverse)
 ```{r create a site lookup table}
 # create plot / site lookup table
 lookup_table <- data.frame(
-  Plot = c("3", "4", "5", "6", "7", "8", "9", "10", "11", "13", "18", "24"),
-  site = c("103", "104", "105", "106", "107", "108", "209", "110", "111", "113", "109", "104"),
-  fire_frequency = c("0.8", "0.8", "0,5", "0.667", "0.333", "0.333", "0", "0", "0.1", "0.1", "0", "0.8")
+  Plot = c("3", "4", "5", "6", "7", "8", "9", "10", "11", "13", "18", "24", "24"),
+  site = c("103", "104", "105", "106", "107", "108", "209", "110", "111", "113", "301", "104", "104 S"),
+  fire_frequency = c("0.8", "0.8", "0.5", "0.667", "0.333", "0.333", "0", "0", "0.1", "0.1", "0", "0.8", "0.8")
 )
 ```
 
-# Load main dataset and process data
-```{r load main datasets and process data into summarised dataset, where each observation is a unique species/site combination}
+# Load and process mycorrhizal dataset
+```{r}
 # main datasets
-data <- read_csv("../data-raw/data.csv")
+mycorrhizal_data <- read_csv("../data-raw/mycorrhizal_data.csv")
 
 # adjust column types
-data$intrhyphae <- as.numeric(data$intrhyphae)
-data$fire_frequency <- as.numeric(data$fire_frequency)
-data$site <- as.character(data$site)
+mycorrhizal_data$intrhyphae <- as.numeric(mycorrhizal_data$intrhyphae)
+mycorrhizal_data$fire_frequency <- as.numeric(mycorrhizal_data$fire_frequency)
+mycorrhizal_data$site <- as.character(mycorrhizal_data$site)
 
 # add a new column "percentage success", which takes the number of non-NA values per 100 rows and divides by 100
-data <- data %>% 
+mycorrhizal_data <- mycorrhizal_data %>% 
   mutate(group = as.integer(row_number()/100)) %>%
   group_by(group) %>%
   mutate(percentage.mycorrhizal.success = sum(!is.na(spore))/n()) %>%
   ungroup()
 
 # only include successful mycorrhizal stains
-data <- filter(data, `staining_success` == "Y")
+mycorrhizal_data <- filter(mycorrhizal_data, `staining_success` == "Y")
 
 # make presence column, which is 1 if any AMF structure is present and 0 if no AMF structures are present
-data$presence <- ifelse(rowSums(data[,c("hyphopodia", "intrhyphae", "arbuscule", "coil", "vesicle", "spore")]) > 0, 1, 0)
+mycorrhizal_data$presence <- ifelse(rowSums(mycorrhizal_data[,c("hyphopodia", "intrhyphae", "arbuscule", "coil", "vesicle", "spore")]) > 0, 1, 0)
 
 # create a summarised dataset, where each observation is a uniqe species / site combination
-data_summarised <- data %>%
+mycorrhizal_data_summarised <- mycorrhizal_data %>%
   group_by(site, species) %>%
   summarise(mean_colonisation = mean(presence),
             fire_frequency = first(fire_frequency),
             percentage.mycorrhizal.success = first(percentage.mycorrhizal.success),
-            light_uptake_herb = first(light_uptake_herb),
-            percent_cover = first(percent_cover),
-            soil_inorganic_nitrogen = first(soil_inorganic_nitrogen),
             functional_group = first(functional_group))
 
 ## multiply decimal values by 100 to get a percentage
-data_summarised$mean_colonisation <- data_summarised$mean_colonisation*100 
+mycorrhizal_data_summarised$mean_colonisation <- mycorrhizal_data_summarised$mean_colonisation*100 
 
 # export processed dataset
-write_csv(data_summarised, "../data/data_summarised")
-```
-
-# Create a summarised datasect, where each observation is a root section
-```{r create a summarised dataset, where each observation is a root section}
-# create 
-data_section_summarised <- data %>%
-  group_by(site, replicate_number_root) %>%
-  summarise(mean_colonisation = mean(presence),
-            species = first(species),
-            fire_frequency = first(fire_frequency),
-            percentage.mycorrhizal.success = first(percentage.mycorrhizal.success),
-            light_uptake_herb = first(light_uptake_herb),
-            percent_cover = first(percent_cover),
-            soil_inorganic_nitrogen = first(soil_inorganic_nitrogen),
-            functional_group = first(functional_group))
-
-## multiply decimal values by 100 to get a percentage
-data_section_summarised$mean_colonisation <- data_section_summarised$mean_colonisation*100 
-
-# export dataset
-write_csv(data_section_summarised, "../data/data_section_summarised")
+write_csv(mycorrhizal_data_summarised, "../data/mycorrhizal_data_summarised")
 ```
 
 # Load and Process Nitrogen Dataset
 ```{r load and process nitrogen dataset}
 nitrogen <- read_csv("../data-raw/nitrogen.csv")
+write_csv(nitrogen, "../data/nitrogen.csv")
 
 #change column name
 nitrogen$site <- nitrogen$Burn.Unit
@@ -97,39 +74,11 @@ nitrogen_summarised <- nitrogen %>%
   group_by(site) %>%
   summarise(mean_inorganic_N = mean(TotalINmgperg))
 
+nitrogen_summarised <- nitrogen_summarised[-2,]
+nitrogen_summarised[2,1] <- "104"
+
 #export dataset
 write_csv(nitrogen_summarised, "../data/nitrogen_summarised")
-```
-
-# Load and Process Root Datasets
-```{r load and process root datasets}
-# root traits dataset
-root_traits <- read_csv("../data-raw/root_traits.csv")
-root_mass <- read_csv("../data-raw/root_mass.csv")
-
-# process root traits dataset
-root_traits$site <- as.character(root_traits$site)
-root_traits <- filter(root_traits, Success == "Y")
-root_traits_summarised <- root_traits %>%
-  group_by(site, species) %>%
-  summarise_all(mean)
-root_traits_summarised <- select(root_traits_summarised, c("site", "species", "total_root_length_mm", "average_diameter_mm", "volume_mm3"))
-
-# process root mass dataset
-root_mass$dry_mass <- root_mass$dry_mass_dish - root_mass$tin_mass
-root_mass$wet_mass <- root_mass$wet_mass_dish - root_mass$tin_mass
-root_mass$site <- as.character(root_mass$site)
-
-# combine root traits and root mass datasets
-root_data <- full_join(root_mass, root_traits_summarised, by = c("site", "species"))
-
-# process root dataset to include SRL and root tissue density
-root_data$Total.Root.Length.m <- root_data$total_root_length_mm / 1000
-root_data$SRL <- root_data$Total.Root.Length.m / root_data$dry_mass
-root_data$Volume.cm3 <- root_data$volume_mm3 / 1000
-root_data$RTD <- root_data$dry_mass / root_data$Volume.cm3
-
-write_csv(root_data, "../data/root_data")
 ```
 
 # Load and process Phosphorous Dataset
@@ -157,11 +106,40 @@ phosphorous_summarised[2,1] <- "104"
 write_csv(phosphorous_summarised, "../data/phosphorous_summarised")
 ```
 
-# Load and Process Inorganic Nitrogen Dataset
-```{r}
-# soil inorganic nitrogen dataset
-nitrogen <- read_csv("../data-raw/nitrogen.csv")
-write_csv(nitrogen, "../data/nitrogen.csv")
+# Load and Process Root Datasets
+```{r load and process root datasets}
+# root traits dataset
+root_traits <- read_csv("../data-raw/root_traits.csv")
+root_mass <- read_csv("../data-raw/root_mass.csv")
+
+# process root traits dataset
+root_traits$site <- as.character(root_traits$site)
+root_traits <- filter(root_traits, Success == "Y")
+root_traits_summarised <- root_traits %>%
+  group_by(site, species) %>%
+  summarise_all(mean)
+root_traits_summarised <- select(root_traits_summarised, c("site", "species", "total_root_length_mm", "average_diameter_mm", "volume_mm3"))
+
+# process root mass dataset
+root_mass$dry_mass <- root_mass$dry_mass_dish - root_mass$tin_mass
+root_mass$wet_mass <- root_mass$wet_mass_dish - root_mass$tin_mass
+root_mass$site <- as.character(root_mass$site)
+
+root_mass <- anti_join(root_mass, mycorrhizal_data_summarised, by = c("species", "site"))
+
+# combine root traits and root mass datasets
+root_data <- full_join(root_mass, root_traits_summarised, by = c("site", "species"))
+
+# process root dataset to include SRL and root tissue density
+root_data$Total.Root.Length.m <- root_data$total_root_length_mm / 1000
+root_data$SRL <- root_data$Total.Root.Length.m / root_data$dry_mass
+root_data$Volume.cm3 <- root_data$volume_mm3 / 1000
+root_data$RTD <- root_data$dry_mass / root_data$Volume.cm3
+
+root_data <- root_data %>%
+  merge(lookup_table, by = "site")
+
+write_csv(root_data, "../data/root_data")
 ```
 
 # Load and Process Cover Dataset
@@ -183,21 +161,45 @@ cover <- cover %>%
 write_csv(cover, "../data/cover.csv")
 ```
 
+# Load and Light and Biomass Dataset
+```{r}
+biomass_light_data <- read_csv("../data-raw/biomass_light_data.csv")
+
+biomass_light_data <- biomass_light_data %>%
+  subset(Year == 2021) %>%
+  select(c("Burn.Unit", "Herbbiommodel", "mLightUptakeHerb"))
+  
+biomass_light_data$site <- biomass_light_data$Burn.Unit
+biomass_light_data$biomass <- biomass_light_data$Herbbiommodel
+biomass_light_data$light_uptake <- biomass_light_data$mLightUptakeHerb
+
+biomass_light_data <- biomass_light_data %>%
+  full_join(lookup_table, by = "site")
+
+biomass_light_data <- na.omit(biomass_light_data)
+
+write_csv(biomass_light_data, "../data/biomass_light_data")
+```
+
 # Combining Datasets
 ```{r combine datasets}
-# for sample summarised dataset
 ## combine root traits, mycorrhizal and phosphorous datasets
-data_combined <- full_join(root_data, data_summarised, by = c("species", "site")) 
-data_combined <- full_join(data_combined, phosphorous_summarised, by = "site")
-data_combined <- left_join(data_combined, cover, by = c("species", "site"))
-data_combined <- filter(data_combined, mean_colonisation > 0)
+nutrients_combined <- full_join(phosphorous_summarised, nitrogen_summarised, by = "site")
+
+cover_indices <- match(paste(mycorrhizal_data_summarised$species, mycorrhizal_data_summarised$site), paste(cover$species, cover$site))
+mycorrhizal_data_summarised$relative_cover <- cover$relative_cover[cover_indices]
+
+root_indices <- match(paste(mycorrhizal_data_summarised$species, mycorrhizal_data_summarised$site), paste(root_data$species, root_data$site))
+mycorrhizal_data_summarised$RTD <- root_data$RTD[root_indices]
+mycorrhizal_data_summarised$average_diameter_mm <- root_data$average_diameter_mm[root_indices]
+mycorrhizal_data_summarised$SRL <- root_data$SRL[root_indices]
+
+data_combined <- merge(mycorrhizal_data_summarised, nutrients_combined, all = TRUE)
+
+data_combined <- filter(data_combined, mean_colonisation >= 0)
 
 write_csv(data_combined, "../data/data_combined")
-
-# for section summarised dataset
-data_section_combined <- full_join(root_data, data_section_summarised, by = c("species", "site"))
-data_section_combined <- full_join(data_section_combined, phosphorous_summarised, by = "site")
-data_section_combined <- left_join(data_section_combined, cover, by = c("species", "site"))
-
-write_csv(data_section_combined, "../data/data_section_combined")
 ```
+
+
+

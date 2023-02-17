@@ -84,49 +84,49 @@ Plot,Lifeform,GenusSpecies,relative_cover,Realfire,species,site,fire_frequency
 4,Woody,Rhus radicans,3.1696194785238925,0.74,Rhus radicans,104,0.8
 4,Woody,Rosa arkansana,1.4791557566444833,0.74,Rosa arkansana,104,0.8
 4,Woody,Rubus flagellaris,1.4791557566444833,0.74,Rubus flagellaris,104,0.8
-5,Grass,Calamagrostis canadensis,1.0645251227131798,0.47,Calamagrostis canadensis,105,"0,5"
-5,Grass,Panicum oligosanthes,0.608300070121817,0.47,Panicum oligosanthes,105,"0,5"
-5,Grass,Panicum perlongum,0.811066760263806,0.47,Panicum perlongum,105,"0,5"
-5,Grass,Panicum praecocious,0.684337578887044,0.47,Panicum praecocious,105,"0,5"
-5,Grass,Poa pratensis,1.1659084676320992,0.47,Poa pratensis,105,"0,5"
-5,Grass,Stipa spartea,1.0645251227131798,0.47,Stipa spartea,105,"0,5"
-5,Grass,Andropogon gerardii,4.410175508383173,0.47,Andropogon gerardii,105,"0,5"
-5,Grass,Bouteloua hirsuta,0.684337578887044,0.47,Bouteloua hirsuta,105,"0,5"
-5,Grass,Panicum capillare,0.3041500350609085,0.47,Panicum capillare,105,"0,5"
-5,Grass,Schizachyrium scoparium,3.7410454312491743,0.47,Schizachyrium scoparium,105,"0,5"
-5,Grass,Sorghastrum nutans,2.875600331623203,0.47,Sorghastrum nutans,105,"0,5"
-5,Grass,Sporobolus cryptandrus,0.3041500350609085,0.47,Sporobolus cryptandrus,105,"0,5"
-5,Legume,Amorpha canescens,1.9769752278959052,0.47,Amorpha canescens,105,"0,5"
-5,Legume,Amphicarpa bracteata,0.5576083975102821,0.47,Amphicarpa bracteata,105,"0,5"
-5,Legume,Lathyrus venosus,0.684337578887044,0.47,Lathyrus venosus,105,"0,5"
-5,Legume,Lespedeza capitata,0.5576083975102821,0.47,Lespedeza capitata,105,"0,5"
-5,Non-legume forb,Ambrosia artemisiifolia,0.811066760263806,0.47,Ambrosia artemisiifolia,105,"0,5"
-5,Non-legume forb,Ambrosia coronopifolia,0.9293473294879536,0.47,Ambrosia coronopifolia,105,"0,5"
-5,Non-legume forb,Anemone cylindrica,1.0645251227131798,0.47,Anemone cylindrica,105,"0,5"
-5,Non-legume forb,Artemisia ludoviciana,0.3041500350609085,0.47,Artemisia ludoviciana,105,"0,5"
-5,Non-legume forb,Aster azureus,0.811066760263806,0.47,Aster azureus,105,"0,5"
-5,Non-legume forb,Comandra umbellata,0.3041500350609085,0.47,Comandra umbellata,105,"0,5"
-5,Non-legume forb,Coreopsis palmata,3.4977254032004477,0.47,Coreopsis palmata,105,"0,5"
-5,Non-legume forb,Erigeron canadensis,0.3041500350609085,0.47,Erigeron canadensis,105,"0,5"
-5,Non-legume forb,Fragaria virginiana,4.714325543444081,0.47,Fragaria virginiana,105,"0,5"
-5,Non-legume forb,Helianthemum bicknellii,0.4942438069739763,0.47,Helianthemum bicknellii,105,"0,5"
-5,Non-legume forb,Helianthus giganteus,1.0645251227131798,0.47,Helianthus giganteus,105,"0,5"
-5,Non-legume forb,Helianthus laetiflorus,3.801875438261356,0.47,Helianthus laetiflorus,105,"0,5"
-5,Non-legume forb,Lithospermum caroliniense,0.8744313508001119,0.47,Lithospermum caroliniense,105,"0,5"
-5,Non-legume forb,Oxybaphus hirsutus,0.3041500350609085,0.47,Oxybaphus hirsutus,105,"0,5"
-5,Non-legume forb,Ranunculus rhomboideus,5.9309256836877156,0.47,Ranunculus rhomboideus,105,"0,5"
-5,Non-legume forb,Rudbeckia serotina,1.0645251227131798,0.47,Rudbeckia serotina,105,"0,5"
-5,Non-legume forb,Solidago canadensis,0.684337578887044,0.47,Solidago canadensis,105,"0,5"
-5,Non-legume forb,Solidago missouriensis,1.0645251227131798,0.47,Solidago missouriensis,105,"0,5"
-5,Non-legume forb,Tradescantia occidentalis,0.5576083975102821,0.47,Tradescantia occidentalis,105,"0,5"
-5,Non-legume forb,Viola pedatifida,0.3041500350609085,0.47,Viola pedatifida,105,"0,5"
-5,Sedge,Carex sp.,1.7868814559828372,0.47,Carex sp.,105,"0,5"
-5,Woody,Corylus americana,13.914864104036562,0.47,Corylus americana,105,"0,5"
-5,Woody,Quercus ellipsoidalis,19.161452208837236,0.47,Quercus ellipsoidalis,105,"0,5"
-5,Woody,Quercus macrocarpa,6.463188245044305,0.47,Quercus macrocarpa,105,"0,5"
-5,Woody,Rhus glabra,2.767765319054267,0.47,Rhus glabra,105,"0,5"
-5,Woody,Rhus radicans,4.714325543444081,0.47,Rhus radicans,105,"0,5"
-5,Woody,Rosa arkansana,0.811066760263806,0.47,Rosa arkansana,105,"0,5"
+5,Grass,Calamagrostis canadensis,1.0645251227131798,0.47,Calamagrostis canadensis,105,0.5
+5,Grass,Panicum oligosanthes,0.608300070121817,0.47,Panicum oligosanthes,105,0.5
+5,Grass,Panicum perlongum,0.811066760263806,0.47,Panicum perlongum,105,0.5
+5,Grass,Panicum praecocious,0.684337578887044,0.47,Panicum praecocious,105,0.5
+5,Grass,Poa pratensis,1.1659084676320992,0.47,Poa pratensis,105,0.5
+5,Grass,Stipa spartea,1.0645251227131798,0.47,Stipa spartea,105,0.5
+5,Grass,Andropogon gerardii,4.410175508383173,0.47,Andropogon gerardii,105,0.5
+5,Grass,Bouteloua hirsuta,0.684337578887044,0.47,Bouteloua hirsuta,105,0.5
+5,Grass,Panicum capillare,0.3041500350609085,0.47,Panicum capillare,105,0.5
+5,Grass,Schizachyrium scoparium,3.7410454312491743,0.47,Schizachyrium scoparium,105,0.5
+5,Grass,Sorghastrum nutans,2.875600331623203,0.47,Sorghastrum nutans,105,0.5
+5,Grass,Sporobolus cryptandrus,0.3041500350609085,0.47,Sporobolus cryptandrus,105,0.5
+5,Legume,Amorpha canescens,1.9769752278959052,0.47,Amorpha canescens,105,0.5
+5,Legume,Amphicarpa bracteata,0.5576083975102821,0.47,Amphicarpa bracteata,105,0.5
+5,Legume,Lathyrus venosus,0.684337578887044,0.47,Lathyrus venosus,105,0.5
+5,Legume,Lespedeza capitata,0.5576083975102821,0.47,Lespedeza capitata,105,0.5
+5,Non-legume forb,Ambrosia artemisiifolia,0.811066760263806,0.47,Ambrosia artemisiifolia,105,0.5
+5,Non-legume forb,Ambrosia coronopifolia,0.9293473294879536,0.47,Ambrosia coronopifolia,105,0.5
+5,Non-legume forb,Anemone cylindrica,1.0645251227131798,0.47,Anemone cylindrica,105,0.5
+5,Non-legume forb,Artemisia ludoviciana,0.3041500350609085,0.47,Artemisia ludoviciana,105,0.5
+5,Non-legume forb,Aster azureus,0.811066760263806,0.47,Aster azureus,105,0.5
+5,Non-legume forb,Comandra umbellata,0.3041500350609085,0.47,Comandra umbellata,105,0.5
+5,Non-legume forb,Coreopsis palmata,3.4977254032004477,0.47,Coreopsis palmata,105,0.5
+5,Non-legume forb,Erigeron canadensis,0.3041500350609085,0.47,Erigeron canadensis,105,0.5
+5,Non-legume forb,Fragaria virginiana,4.714325543444081,0.47,Fragaria virginiana,105,0.5
+5,Non-legume forb,Helianthemum bicknellii,0.4942438069739763,0.47,Helianthemum bicknellii,105,0.5
+5,Non-legume forb,Helianthus giganteus,1.0645251227131798,0.47,Helianthus giganteus,105,0.5
+5,Non-legume forb,Helianthus laetiflorus,3.801875438261356,0.47,Helianthus laetiflorus,105,0.5
+5,Non-legume forb,Lithospermum caroliniense,0.8744313508001119,0.47,Lithospermum caroliniense,105,0.5
+5,Non-legume forb,Oxybaphus hirsutus,0.3041500350609085,0.47,Oxybaphus hirsutus,105,0.5
+5,Non-legume forb,Ranunculus rhomboideus,5.9309256836877156,0.47,Ranunculus rhomboideus,105,0.5
+5,Non-legume forb,Rudbeckia serotina,1.0645251227131798,0.47,Rudbeckia serotina,105,0.5
+5,Non-legume forb,Solidago canadensis,0.684337578887044,0.47,Solidago canadensis,105,0.5
+5,Non-legume forb,Solidago missouriensis,1.0645251227131798,0.47,Solidago missouriensis,105,0.5
+5,Non-legume forb,Tradescantia occidentalis,0.5576083975102821,0.47,Tradescantia occidentalis,105,0.5
+5,Non-legume forb,Viola pedatifida,0.3041500350609085,0.47,Viola pedatifida,105,0.5
+5,Sedge,Carex sp.,1.7868814559828372,0.47,Carex sp.,105,0.5
+5,Woody,Corylus americana,13.914864104036562,0.47,Corylus americana,105,0.5
+5,Woody,Quercus ellipsoidalis,19.161452208837236,0.47,Quercus ellipsoidalis,105,0.5
+5,Woody,Quercus macrocarpa,6.463188245044305,0.47,Quercus macrocarpa,105,0.5
+5,Woody,Rhus glabra,2.767765319054267,0.47,Rhus glabra,105,0.5
+5,Woody,Rhus radicans,4.714325543444081,0.47,Rhus radicans,105,0.5
+5,Woody,Rosa arkansana,0.811066760263806,0.47,Rosa arkansana,105,0.5
 6,Grass,Agropyron repens,1.0981622204214356,0.64,Agropyron repens,106,0.667
 6,Grass,Bromus inermis,0.70596142741378,0.64,Bromus inermis,106,0.667
 6,Grass,Koeleria cristata,0.7844015860153111,0.64,Koeleria cristata,106,0.667
@@ -374,68 +374,107 @@ Plot,Lifeform,GenusSpecies,relative_cover,Realfire,species,site,fire_frequency
 13,Woody,Rubus idaeus,2.021418829303492,0.09,Rubus idaeus,113,0.1
 13,Woody,Vaccinium angustifolium,4.331611777078912,0.09,Vaccinium angustifolium,113,0.1
 13,Woody,Vitis riparia,0.5775482369438549,0.09,Vitis riparia,113,0.1
-18,Grass,Andropogon gerardii,0.4889225184738567,0,Andropogon gerardii,109,0
-18,Legume,Amphicarpa bracteata,6.155978982158175,0,Amphicarpa bracteata,109,0
-18,Legume,Lathyrus venosus,7.578299036344779,0,Lathyrus venosus,109,0
-18,Non-legume forb,Aralia nudicaulis,7.578299036344779,0,Aralia nudicaulis,109,0
-18,Non-legume forb,Circaea quadrisulcata,1.7112288146584984,0,Circaea quadrisulcata,109,0
-18,Non-legume forb,Fragaria virginiana,0.4889225184738567,0,Fragaria virginiana,109,0
-18,Non-legume forb,Galium boreale,1.3037933827599253,0,Galium boreale,109,0
-18,Non-legume forb,Polygonatum biflorum,4.033610777409318,0,Polygonatum biflorum,109,0
-18,Non-legume forb,Trientalis borealis,2.5668432219877477,0,Trientalis borealis,109,0
-18,Sedge,Carex pensylvanica,7.578299036344779,0,Carex pensylvanica,109,0
-18,Sedge,Carex sp.,9.778450369477135,0,Carex sp.,109,0
-18,Vine,Parthenocissus vitacea,3.391899971912381,0,Parthenocissus vitacea,109,0
-18,Woody,Acer rubrum,2.281638419707639,0,Acer rubrum,109,0
-18,Woody,Amelanchier sp.,2.8724197960339084,0,Amelanchier sp.,109,0
-18,Woody,Corylus americana,7.752914222910936,0,Corylus americana,109,0
-18,Woody,Diervilla lonicera,0.4889225184738567,0,Diervilla lonicera,109,0
-18,Woody,Lonicera dioica,1.7112288146584984,0,Lonicera dioica,109,0
-18,Woody,Prunus pensylvanica,7.578299036344779,0,Prunus pensylvanica,109,0
-18,Woody,Prunus serotina,1.7112288146584984,0,Prunus serotina,109,0
-18,Woody,Prunus virginiana,5.622608962449352,0,Prunus virginiana,109,0
-18,Woody,Quercus ellipsoidalis,3.7585918607677735,0,Quercus ellipsoidalis,109,0
-18,Woody,Quercus macrocarpa,0.4889225184738567,0,Quercus macrocarpa,109,0
-18,Woody,Rhus radicans,1.7112288146584984,0,Rhus radicans,109,0
-18,Woody,Rubus idaeus,1.7112288146584984,0,Rubus idaeus,109,0
-18,Woody,Vaccinium angustifolium,5.622608962449352,0,Vaccinium angustifolium,109,0
-18,Woody,Vitis riparia,4.033610777409318,0,Vitis riparia,109,0
+18,Grass,Andropogon gerardii,0.4889225184738567,0,Andropogon gerardii,301,0
+18,Legume,Amphicarpa bracteata,6.155978982158175,0,Amphicarpa bracteata,301,0
+18,Legume,Lathyrus venosus,7.578299036344779,0,Lathyrus venosus,301,0
+18,Non-legume forb,Aralia nudicaulis,7.578299036344779,0,Aralia nudicaulis,301,0
+18,Non-legume forb,Circaea quadrisulcata,1.7112288146584984,0,Circaea quadrisulcata,301,0
+18,Non-legume forb,Fragaria virginiana,0.4889225184738567,0,Fragaria virginiana,301,0
+18,Non-legume forb,Galium boreale,1.3037933827599253,0,Galium boreale,301,0
+18,Non-legume forb,Polygonatum biflorum,4.033610777409318,0,Polygonatum biflorum,301,0
+18,Non-legume forb,Trientalis borealis,2.5668432219877477,0,Trientalis borealis,301,0
+18,Sedge,Carex pensylvanica,7.578299036344779,0,Carex pensylvanica,301,0
+18,Sedge,Carex sp.,9.778450369477135,0,Carex sp.,301,0
+18,Vine,Parthenocissus vitacea,3.391899971912381,0,Parthenocissus vitacea,301,0
+18,Woody,Acer rubrum,2.281638419707639,0,Acer rubrum,301,0
+18,Woody,Amelanchier sp.,2.8724197960339084,0,Amelanchier sp.,301,0
+18,Woody,Corylus americana,7.752914222910936,0,Corylus americana,301,0
+18,Woody,Diervilla lonicera,0.4889225184738567,0,Diervilla lonicera,301,0
+18,Woody,Lonicera dioica,1.7112288146584984,0,Lonicera dioica,301,0
+18,Woody,Prunus pensylvanica,7.578299036344779,0,Prunus pensylvanica,301,0
+18,Woody,Prunus serotina,1.7112288146584984,0,Prunus serotina,301,0
+18,Woody,Prunus virginiana,5.622608962449352,0,Prunus virginiana,301,0
+18,Woody,Quercus ellipsoidalis,3.7585918607677735,0,Quercus ellipsoidalis,301,0
+18,Woody,Quercus macrocarpa,0.4889225184738567,0,Quercus macrocarpa,301,0
+18,Woody,Rhus radicans,1.7112288146584984,0,Rhus radicans,301,0
+18,Woody,Rubus idaeus,1.7112288146584984,0,Rubus idaeus,301,0
+18,Woody,Vaccinium angustifolium,5.622608962449352,0,Vaccinium angustifolium,301,0
+18,Woody,Vitis riparia,4.033610777409318,0,Vitis riparia,301,0
 24,Grass,Agrostis scabra,0.4089986894096099,0.74,Agrostis scabra,104,0.8
+24,Grass,Agrostis scabra,0.4089986894096099,0.74,Agrostis scabra,104 S,0.8
 24,Grass,Koeleria cristata,1.0906631718952924,0.74,Koeleria cristata,104,0.8
+24,Grass,Koeleria cristata,1.0906631718952924,0.74,Koeleria cristata,104 S,0.8
 24,Grass,Panicum oligosanthes,1.7382444299908422,0.74,Panicum oligosanthes,104,0.8
+24,Grass,Panicum oligosanthes,1.7382444299908422,0.74,Panicum oligosanthes,104 S,0.8
 24,Grass,Panicum perlongum,1.2269960682288297,0.74,Panicum perlongum,104,0.8
+24,Grass,Panicum perlongum,1.2269960682288297,0.74,Panicum perlongum,104 S,0.8
 24,Grass,Panicum praecocious,2.658491481162464,0.74,Panicum praecocious,104,0.8
+24,Grass,Panicum praecocious,2.658491481162464,0.74,Panicum praecocious,104 S,0.8
 24,Grass,Poa pratensis,2.0040935781070885,0.74,Poa pratensis,104,0.8
+24,Grass,Poa pratensis,2.0040935781070885,0.74,Poa pratensis,104 S,0.8
 24,Grass,Stipa spartea,1.4314954129336346,0.74,Stipa spartea,104,0.8
+24,Grass,Stipa spartea,1.4314954129336346,0.74,Stipa spartea,104 S,0.8
 24,Grass,Andropogon gerardii,4.166674148360401,0.74,Andropogon gerardii,104,0.8
+24,Grass,Andropogon gerardii,4.166674148360401,0.74,Andropogon gerardii,104 S,0.8
 24,Grass,Bouteloua hirsuta,2.726657929533732,0.74,Bouteloua hirsuta,104,0.8
+24,Grass,Bouteloua hirsuta,2.726657929533732,0.74,Bouteloua hirsuta,104 S,0.8
 24,Grass,Panicum capillare,0.4089986894096099,0.74,Panicum capillare,104,0.8
+24,Grass,Panicum capillare,0.4089986894096099,0.74,Panicum capillare,104 S,0.8
 24,Grass,Schizachyrium scoparium,1.4314954129336346,0.74,Schizachyrium scoparium,104,0.8
+24,Grass,Schizachyrium scoparium,1.4314954129336346,0.74,Schizachyrium scoparium,104 S,0.8
 24,Grass,Sorghastrum nutans,5.45331585743147,0.74,Sorghastrum nutans,104,0.8
+24,Grass,Sorghastrum nutans,5.45331585743147,0.74,Sorghastrum nutans,104 S,0.8
 24,Grass,Panicum sp.,1.4314954129336346,0.74,Panicum sp.,104,0.8
+24,Grass,Panicum sp.,1.4314954129336346,0.74,Panicum sp.,104 S,0.8
 24,Legume,Amphicarpa bracteata,3.8854875493912937,0.74,Amphicarpa bracteata,104,0.8
+24,Legume,Amphicarpa bracteata,3.8854875493912937,0.74,Amphicarpa bracteata,104 S,0.8
 24,Legume,Lespedeza capitata,0.7011406102996174,0.74,Lespedeza capitata,104,0.8
+24,Legume,Lespedeza capitata,0.7011406102996174,0.74,Lespedeza capitata,104 S,0.8
 24,Non-legume forb,Ambrosia artemisiifolia elatior,1.4314954129336346,0.74,Ambrosia artemisiifolia elatior,104,0.8
+24,Non-legume forb,Ambrosia artemisiifolia elatior,1.4314954129336346,0.74,Ambrosia artemisiifolia elatior,104 S,0.8
 24,Non-legume forb,Ambrosia coronopifolia,2.170839197761467,0.74,Ambrosia coronopifolia,104,0.8
+24,Non-legume forb,Ambrosia coronopifolia,2.170839197761467,0.74,Ambrosia coronopifolia,104 S,0.8
 24,Non-legume forb,Aster azureus,0.6134980341144148,0.74,Aster azureus,104,0.8
+24,Non-legume forb,Aster azureus,0.6134980341144148,0.74,Aster azureus,104 S,0.8
 24,Non-legume forb,Coreopsis palmata,0.7498309304479519,0.74,Coreopsis palmata,104,0.8
+24,Non-legume forb,Coreopsis palmata,0.7498309304479519,0.74,Coreopsis palmata,104 S,0.8
 24,Non-legume forb,Erigeron canadensis,0.4089986894096099,0.74,Erigeron canadensis,104,0.8
+24,Non-legume forb,Erigeron canadensis,0.4089986894096099,0.74,Erigeron canadensis,104 S,0.8
 24,Non-legume forb,Euphorbia corollata,6.3394796858489535,0.74,Euphorbia corollata,104,0.8
+24,Non-legume forb,Euphorbia corollata,6.3394796858489535,0.74,Euphorbia corollata,104 S,0.8
 24,Non-legume forb,Euthamia graminifolia,1.4314954129336346,0.74,Euthamia graminifolia,104,0.8
+24,Non-legume forb,Euthamia graminifolia,1.4314954129336346,0.74,Euthamia graminifolia,104 S,0.8
 24,Non-legume forb,Fragaria virginiana,3.374239187629281,0.74,Fragaria virginiana,104,0.8
+24,Non-legume forb,Fragaria virginiana,3.374239187629281,0.74,Fragaria virginiana,104 S,0.8
 24,Non-legume forb,Helianthemum bicknellii,0.8179973788192197,0.74,Helianthemum bicknellii,104,0.8
+24,Non-legume forb,Helianthemum bicknellii,0.8179973788192197,0.74,Helianthemum bicknellii,104 S,0.8
 24,Non-legume forb,Helianthus laetiflorus,0.4089986894096099,0.74,Helianthus laetiflorus,104,0.8
+24,Non-legume forb,Helianthus laetiflorus,0.4089986894096099,0.74,Helianthus laetiflorus,104 S,0.8
 24,Non-legume forb,Lithospermum caroliniense,2.726657929533732,0.74,Lithospermum caroliniense,104,0.8
+24,Non-legume forb,Lithospermum caroliniense,2.726657929533732,0.74,Lithospermum caroliniense,104 S,0.8
 24,Non-legume forb,Maianthemum canadense,0.4089986894096099,0.74,Maianthemum canadense,104,0.8
+24,Non-legume forb,Maianthemum canadense,0.4089986894096099,0.74,Maianthemum canadense,104 S,0.8
 24,Non-legume forb,Scutellaria parvula,0.4089986894096099,0.74,Scutellaria parvula,104,0.8
+24,Non-legume forb,Scutellaria parvula,0.4089986894096099,0.74,Scutellaria parvula,104 S,0.8
 24,Non-legume forb,Sisyrinchium campestre,0.4089986894096099,0.74,Sisyrinchium campestre,104,0.8
+24,Non-legume forb,Sisyrinchium campestre,0.4089986894096099,0.74,Sisyrinchium campestre,104 S,0.8
 24,Non-legume forb,Solidago missouriensis,0.4089986894096099,0.74,Solidago missouriensis,104,0.8
+24,Non-legume forb,Solidago missouriensis,0.4089986894096099,0.74,Solidago missouriensis,104 S,0.8
 24,Non-legume forb,Tradescantia occidentalis,0.664622870290616,0.74,Tradescantia occidentalis,104,0.8
+24,Non-legume forb,Tradescantia occidentalis,0.664622870290616,0.74,Tradescantia occidentalis,104 S,0.8
 24,Sedge,Carex pensylvanica,0.4089986894096099,0.74,Carex pensylvanica,104,0.8
+24,Sedge,Carex pensylvanica,0.4089986894096099,0.74,Carex pensylvanica,104 S,0.8
 24,Sedge,Carex sp.,3.5246063529255784,0.74,Carex sp.,104,0.8
+24,Sedge,Carex sp.,3.5246063529255784,0.74,Carex sp.,104 S,0.8
 24,Woody,Quercus ellipsoidalis,8.478857445523067,0.74,Quercus ellipsoidalis,104,0.8
+24,Woody,Quercus ellipsoidalis,8.478857445523067,0.74,Quercus ellipsoidalis,104 S,0.8
 24,Woody,Quercus macrocarpa,16.053198559327186,0.74,Quercus macrocarpa,104,0.8
+24,Woody,Quercus macrocarpa,16.053198559327186,0.74,Quercus macrocarpa,104 S,0.8
 24,Woody,Rhus glabra,6.3394796858489535,0.74,Rhus glabra,104,0.8
+24,Woody,Rhus glabra,6.3394796858489535,0.74,Rhus glabra,104 S,0.8
 24,Woody,Rhus radicans,6.3394796858489535,0.74,Rhus radicans,104,0.8
+24,Woody,Rhus radicans,6.3394796858489535,0.74,Rhus radicans,104 S,0.8
 24,Woody,Rubus flagellaris,3.8854875493912937,0.74,Rubus flagellaris,104,0.8
+24,Woody,Rubus flagellaris,3.8854875493912937,0.74,Rubus flagellaris,104 S,0.8
 24,Woody,Rubus pubescens,1.4314954129336346,0.74,Rubus pubescens,104,0.8
+24,Woody,Rubus pubescens,1.4314954129336346,0.74,Rubus pubescens,104 S,0.8

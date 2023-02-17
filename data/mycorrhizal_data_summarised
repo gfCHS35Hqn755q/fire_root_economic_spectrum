@@ -1,0 +1,18 @@
+site,species,mean_colonisation,fire_frequency,percentage.mycorrhizal.success,functional_group
+104,Asclepias tuberosa,8.333333333333334,0.8,0.59,non-legume forb
+104,Poa pratensis,50,0.8,0.30303030303030304,grass
+104,Sorghastrum nutans,40.00000000000001,0.8,0.3,grass
+105,Aster azureus,3.7499999999999987,0.5,0.8,non-legume forb
+105,Panicum perlongum,25,0.5,0.31,grass
+106,Andropogon gerardii,42.857142857142854,0.667,0.7,grass
+106,Urtica dioica,0,0.667,0.3,non-legume forb
+107,Amphicarpa bracteata,58.33333333333333,0.333,0.12,legume
+107,Poa pratensis,41.42857142857142,0.333,0.7,grass
+108,Amphicarpa bracteata,70,0.333,0.1,legume
+108,Andropogon gerardii,44.086021505376344,0.333,0.63,grass
+108,Poa pratensis,22.999999999999982,0.333,0.99,grass
+110,Poa pratensis,0,0,0.69,grass
+111,Poa pratensis,12.5,0.1,0.8,grass
+209,Amphicarpa bracteata,26.66666666666667,0,0.6,legume
+301,Amphicarpa bracteata,14.28571428571429,0,0.69,legume
+301,Poa pratensis,0,0,0.51,grass
