@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+library(tidyverse)
 library(ggpubr)
 library(FactoMineR)
 library(factoextra)
@@ -23,7 +24,9 @@ data_section_combined <- read_csv("../data/data_section_combined")
 nitrogen <- read_csv("../data/nitrogen.csv")
 nitrogen_summarised <- read_csv("../data/nitrogen_summarised")
 phosphorous_summarised <- read_csv("../data/phosphorous_summarised")
+phosphorous <- read_csv("../data/phosphorous.csv")
 root_data <- read_csv("../data/root_data")
+data_combined <- read_csv("../data/data_combined")
 ```
 
 ```{r plot mycorrrhizal sample data}
@@ -146,7 +149,7 @@ pca_data_section$RD <- pca_data_section$average_diameter_mm
 
 vars <- c("RD", "SRL", "RTD", "AMF", "FF", "LU", "SIN", "SP")
 # mycorrhizal colonisation and average root diaeter, as well as soil inorganic nitrogen don't contribute to the variance in the data
-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
+
 pca_data_section[, vars] <- scale(pca_data_section[, vars])
 
 pca_section <- PCA(scale(pca_data_section[, vars]), scale.unit = TRUE, ncp = 5, graph = FALSE)

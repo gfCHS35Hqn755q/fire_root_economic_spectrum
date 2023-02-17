@@ -11,10 +11,6 @@ knitr::opts_chunk$set(echo = TRUE)
 # Load Packages
 ```{r load packages, include=FALSE}
 library(tidyverse)
-# library(ggpubr)
-# library(FactoMineR)
-# library(factoextra)
-# source("../R/publication_theme.R")
 ```
 
 # Create a site lookup table
@@ -146,6 +142,8 @@ phosphorous <- rename(phosphorous, soil_phosphate = P, site = Burn.Unit, fire_fr
 phosphorous <- select(phosphorous, site, Deepest, soil_phosphate, fire_frequency)
 phosphorous <- filter(phosphorous, Deepest <= 20)
 phosphorous <- na.omit(phosphorous)
+
+write_csv(phosphorous, "../data/phosphorous.csv")
 
 # summarise phosphorous data, taking the mean phosphate values for each burn unit (site)
 phosphorous_summarised <- phosphorous %>%
