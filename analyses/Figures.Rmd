@@ -124,7 +124,7 @@ p1_nit <- ggplot(nitrogen, aes(x=Fire, y=TotalINmgperg)) +
                            "\nn = 87")) +
   ylab(expression(paste("Soil Inorganic Nitrogen (", mgNgsoil^-1, ")", sep = ""))) +
   xlab("Fire Frequency (Number of Fires / Year)") + 
-  ggtitle("Relationship between Soil Inorganic Nitrogen and Fire Frequency")
+  ggtitle("Relationship between Soil Inorganic Nitrogen and Fire Frequency") +
   theme_pubclean()
   
 print(p1_nit)
@@ -157,7 +157,7 @@ functional_group_mycorrhizae$sample_size <- c(10, 4, 3)
 
   
 # plot the average mycorrhizal colonisation per species
-ggplot(functional_group_mycorrhizae, aes(x=functional_group, y=avg_colonisation)) + 
+average_AMF <- ggplot(functional_group_mycorrhizae, aes(x=functional_group, y=avg_colonisation)) + 
   geom_bar(stat="identity") + 
   xlab("Functional Group") +
   ylab("Average AMF Colonisation (% of Root)") +
@@ -166,6 +166,8 @@ ggplot(functional_group_mycorrhizae, aes(x=functional_group, y=avg_colonisation)
   geom_text(aes(label = paste("n = ", sample_size)), hjust = 1.2, colour = "white") +
   theme_pubclean() + 
   scale_fill_Publication()
+
+plot(average_AMF)
 ```
 
 ```{r plot mycorrhizal colonisation against root traits}
@@ -174,7 +176,7 @@ myc_diam_model <- lm(mean_colonisation ~ average_diameter_mm, data = data_combin
 p2_myc_diam <- ggplot(data_combined, aes(x=average_diameter_mm, y=mean_colonisation)) + 
   geom_point() + 
   stat_smooth(method = "lm") + 
-  geom_label(aes(x = 0, y = 50), hjust = 0, 
+  geom_label(aes(x = -0.05, y = 50), hjust = 0, 
              label = paste("Adj R2 = ",signif(summary(myc_diam_model)$adj.r.squared, 5), 
                            "\nIntercept =",signif(myc_diam_model$coef[[1]],5 ), 
                            " \nSlope =",signif(myc_diam_model$coef[[2]], 5), 
