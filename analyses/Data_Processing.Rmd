@@ -125,18 +125,27 @@ root_mass$dry_mass <- root_mass$dry_mass_dish - root_mass$tin_mass
 root_mass$wet_mass <- root_mass$wet_mass_dish - root_mass$tin_mass
 root_mass$site <- as.character(root_mass$site)
 
-root_mass <- anti_join(root_mass, mycorrhizal_data_summarised, by = c("species", "site"))
-
 # combine root traits and root mass datasets
-root_data <- full_join(root_mass, root_traits_summarised, by = c("site", "species"))
+root_traits_summarised$dry_mass <- NA
+
+for (i in 1:nrow(root_traits_summarised)) {
+  site_species <- paste(root_traits_summarised$species[i], root_traits_summarised$site[i])
+  match_row <- which(paste(root_mass$species, root_mass$site) == site_species)
+  if (length(match_row) == 1) {
+    root_traits_summarised$dry_mass[i] <- root_mass$dry_mass[match_row]
+  } else {
+    # handle cases where there are multiple matches or no matches
+    # e.g. by assigning NA or taking the average of dry_mass values
+  }
+}
 
 # process root dataset to include SRL and root tissue density
-root_data$Total.Root.Length.m <- root_data$total_root_length_mm / 1000
-root_data$SRL <- root_data$Total.Root.Length.m / root_data$dry_mass
-root_data$Volume.cm3 <- root_data$volume_mm3 / 1000
-root_data$RTD <- root_data$dry_mass / root_data$Volume.cm3
+root_traits_summarised$total_root_length_m <- root_traits_summarised$total_root_length_mm / 1000
+root_traits_summarised$SRL <- root_traits_summarised$total_root_length_m / root_traits_summarised$dry_mass
+root_traits_summarised$Volume.cm3 <- root_traits_summarised$volume_mm3 / 1000
+root_traits_summarised$RTD <- root_traits_summarised$dry_mass / root_traits_summarised$Volume.cm3
 
-root_data <- root_data %>%
+root_data <- root_traits_summarised %>%
   merge(lookup_table, by = "site")
 
 write_csv(root_data, "../data/root_data")
