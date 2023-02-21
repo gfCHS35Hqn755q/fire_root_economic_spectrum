@@ -4,7 +4,7 @@
 
 ## Folder Layout
 - Raw data in "data"
-- Processed data in "data-raw"
+- Processed data (using "data/Data_Processing.Rmd") in "data-raw"
 - Rmd files for processing, plotting and analysis in "analyses"
 - Manuscipt revisions, including figures, in "manuscript"
 - Cedar Creek Method data in "methods"
