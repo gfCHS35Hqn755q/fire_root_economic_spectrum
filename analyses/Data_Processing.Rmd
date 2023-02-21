@@ -69,6 +69,14 @@ write_csv(nitrogen, "../data/nitrogen.csv")
 #change column name
 nitrogen$site <- nitrogen$Burn.Unit
 
+nitrogen <- nitrogen %>%
+  merge(lookup_table, by = "site")
+
+nitrogen$site <- sub("104 S", "104", nitrogen$site)
+nitrogen$fire_frequency <- as.numeric(nitrogen$fire_frequency)
+
+write_csv(nitrogen, "../data/nitrogen.csv")
+
 # summarise dataset
 nitrogen_summarised <- nitrogen %>%
   group_by(site) %>%
@@ -114,7 +122,6 @@ root_mass <- read_csv("../data-raw/root_mass.csv")
 
 # process root traits dataset
 root_traits$site <- as.character(root_traits$site)
-root_traits <- filter(root_traits, Success == "Y")
 root_traits_summarised <- root_traits %>%
   group_by(site, species) %>%
   summarise_all(mean)
@@ -147,6 +154,10 @@ root_traits_summarised$RTD <- root_traits_summarised$dry_mass / root_traits_summ
 
 root_data <- root_traits_summarised %>%
   merge(lookup_table, by = "site")
+
+root_data_functional_group <- c("legume", "legume", "grass", "grass", "tree", "tree", "grass", "grass", "legume", "grass", "grass", "legume", "grass", "grass", "legume", "grass", "grass", "legume", "grass", "legume", "legume", "grass")
+root_data$functional_group <- root_data_functional_group
+
 
 write_csv(root_data, "../data/root_data")
 ```
@@ -187,6 +198,8 @@ biomass_light_data <- biomass_light_data %>%
 
 biomass_light_data <- na.omit(biomass_light_data)
 
+biomass_light_data[2,1] <- "104"
+
 write_csv(biomass_light_data, "../data/biomass_light_data")
 ```
 
@@ -202,6 +215,10 @@ root_indices <- match(paste(mycorrhizal_data_summarised$species, mycorrhizal_dat
 mycorrhizal_data_summarised$RTD <- root_data$RTD[root_indices]
 mycorrhizal_data_summarised$average_diameter_mm <- root_data$average_diameter_mm[root_indices]
 mycorrhizal_data_summarised$SRL <- root_data$SRL[root_indices]
+
+light_indices <- match(paste(mycorrhizal_data_summarised$site), paste(biomass_light_data$site))
+mycorrhizal_data_summarised$light_uptake <- biomass_light_data$light_uptake[light_indices]
+mycorrhizal_data_summarised$biomass <- biomass_light_data$biomass[light_indices]
 
 data_combined <- merge(mycorrhizal_data_summarised, nutrients_combined, all = TRUE)
 

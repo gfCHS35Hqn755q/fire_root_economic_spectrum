@@ -1,41 +1,43 @@
-species,site,tin_mass,wet_mass_dish,dry_mass_dish
-Andropogon gerardii,104,1.0347,8.446,2.9631
-Ampicarpa bacteata,104,1.0347,1.671,1.1134
-Andropogon gerardii,106,1.0347,2.968,1.5426
-Amphicarpa bracteata,111,1.0347,1.516,1.0979
-Poa pratensis,301,1.0347,2.782,1.3668
-Amphicarpa bracteata,113,1.0347,2.039,1.1548
-Poa pratensis,209,1.0347,4.296,1.5427
-Poa pratensis,104,1.0347,2.977,1.3296
-Andropogon gerardii,108,1.0347,1.953,1.1666
-Amphicarpa bracteata,107,1.0347,2.015,1.1481
-Sorghastrum nutans,107,1.0347,3.844,1.5756
-Asclepias tuberosa,104,1.0347,15.682,7.3781
-Poa pratensis,107,1.0347,4.3,1.5006
-Aster azureus,105,1.0347,4.843,1.8838
-Amphicarpa bracteata,106,1.0347,2.14,1.2488
-Amphicarpa bracteata,301,1.0347,1.824,1.1112
-Panicum perlongum,105,1.0347,6.017,3.0536
-Amphicarpa bracteata,209,1.0347,1.923,1.0998
-Corylus americana,110,4.738,8.898,8.7
-Schizachyrium scoparium,111,1.0347,5.151,2.1146
-Urtica dioica,106,1.0347,6.536,2.1773
-Quercus elisoidialis,104,4.738,16.057,10.3
-Amphicarpa bracteata,110,1.0347,1.493,1.0991
-Aralia nudicalis,111,1.0347,2.953,1.6007
-Aralia nudicalis,113,4.738,10.667,6.6
-Poa pratensis,111,1.0347,3.137,1.3079
-Solidago nemoralis,104,1.0347,8.99,3.2825
-Poa pratensis,108,1.0347,2.441,1.1991
-Amphicarpa bracteata,108,1.0347,1.714,1.1212
-Andropogon gerardii,105,1.0347,4.846,1.4545
-Poa pratensis,110,1.0347,2.962,1.6216
-Corylus americana,107,5.6,39.7,20.9
-Quercus ellipsoidalis,111,5,19.1,11
-Quercus ellipsoidalis,106,7.3,37.1,19.8
-Quercus ellipsoidalis,113,7.3,34.3,19.1
-Amorpha canescans,105,4.9,37.2,21.3
-Corylus americana,108,26.1,162.6,
-Corylus americana,301,23.6,107.5,
-Corylus americana,209,7.3,44,
-Corylus americana,105,4.8,46.5,
+species,site,tin_mass,wet_mass_dish,dry_mass_dish,,,,,
+Andropogon gerardii,104,1.0347,8.446,2.9631,,,,,
+Ampicarpa bacteata,104,1.0347,1.671,1.1134,,,,,
+Andropogon gerardii,106,1.0347,2.968,1.5426,,,,,
+Amphicarpa bracteata,111,1.0347,1.516,1.0979,,,,,
+Poa pratensis,301,1.0347,2.782,1.3668,,,,,
+Amphicarpa bracteata,113,1.0347,2.039,1.1548,,,,,
+Poa pratensis,209,1.0347,4.296,1.5427,,,,,
+Poa pratensis,104,1.0347,2.977,1.3296,,,,,
+Andropogon gerardii,108,1.0347,1.953,1.1666,,,,,
+Amphicarpa bracteata,107,1.0347,2.015,1.1481,,,,,
+Sorghastrum nutans,107,1.0347,3.844,1.5756,,,,,
+Asclepias tuberosa,104,1.0347,15.682,7.3781,,,,,
+Poa pratensis,107,1.0347,4.3,1.5006,,,,,
+Aster azureus,105,1.0347,4.843,1.8838,,,,,
+Amphicarpa bracteata,106,1.0347,2.14,1.2488,,,,,
+Amphicarpa bracteata,301,1.0347,1.824,1.1112,,,,,
+Panicum perlongum,105,1.0347,6.017,3.0536,,,,,
+Amphicarpa bracteata,209,1.0347,1.923,1.0998,,,,,
+Corylus americana,110,4.738,8.898,8.7,,,,,
+Schizachyrium scoparium,111,1.0347,5.151,2.1146,,,,,
+Urtica dioica,106,1.0347,6.536,2.1773,,,,,
+Quercus elisoidialis,104,4.738,16.057,10.3,,,,,
+Amphicarpa bracteata,110,1.0347,1.493,1.0991,,,,,
+Aralia nudicalis,111,1.0347,2.953,1.6007,,,,,
+Aralia nudicalis,113,4.738,10.667,6.6,,,,,
+Poa pratensis,111,1.0347,3.137,1.3079,,,,,
+Solidago nemoralis,104,1.0347,8.99,3.2825,,,,,
+Poa pratensis,108,1.0347,2.441,1.1991,,,,,
+Amphicarpa bracteata,108,1.0347,1.714,1.1212,,,,,
+Andropogon gerardii,105,1.0347,4.846,1.4545,,,,,
+Poa pratensis,110,1.0347,2.962,1.6216,,,,,
+Corylus americana,107,5.6,39.7,20.9,,,,,
+Quercus ellipsoidalis,111,5,19.1,11,,,,,Dry mass
+Quercus ellipsoidalis,106,7.3,37.1,19.8,,,107,Corylus americana,20.9
+Quercus ellipsoidalis,113,7.3,34.3,19.1,,,111,Quercus ellipsoidalis,11
+Amorpha canescans,105,4.9,37.2,21.3,,,106,Quercus ellipsoidalis,19.8
+Corylus americana,108,26.1,162.6,79.3,,,113,Quercus ellipsoidalis,19.1
+Corylus americana,301,23.6,107.5,65.2,,,105,Amorpha canescans,21.3
+Corylus americana,209,7.3,44,22.4,,,108,Corylus americana,79.3
+Corylus americana,105,4.8,46.5,22.8,,,301,Corylus americana,65.2
+,,,,,,,209,Corylus americana,22.4
+,,,,,,,105,Corylus americana,22.8
