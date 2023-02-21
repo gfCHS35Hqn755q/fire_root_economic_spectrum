@@ -8,7 +8,6 @@
 - Raw data in "data"
 - Processed data (using "data/Data_Processing.Rmd") in "data-raw"
 - Rmd files for processing, plotting and analysis in "analyses"
-- Manuscipt revisions, including figures, in "manuscript"
 - Cedar Creek Method data in "methods"
 - Custom publication theme R script in "R"
 
