@@ -1,6 +1,8 @@
 # How does fire frequency affect the root economic spectrum of herbaceous plants?
 
-**Louis Cohen**, Samples collected by: Ellie Wilding, academic supervisor: Adam Pellegrini
+- Louis Cohen Part II Project
+- Samples collected by: Ellie Wilding
+- Academic supervisor: Dr Adam Pellegrini
 
 ## Folder Layout
 - Raw data in "data"
