@@ -200,17 +200,17 @@ functional_group_mycorrhizae$sample_size <- c(10, 4, 3)
 kruskal_test <- kruskal.test(avg_colonisation ~ functional_group, data = functional_group_mycorrhizae)
   
 # plot the average mycorrhizal colonisation per species
-average_AMF <- ggplot(functional_group_mycorrhizae, aes(x=functional_group, y=avg_colonisation)) + 
-  geom_bar(stat="identity", fill = ("#386cb0")) + 
+average_AMF <- ggplot(data_combined, aes(x=functional_group, y=mean_colonisation)) + 
+  geom_point() + 
   xlab("Functional Group") +
   ylab("Average AMF Colonisation (% of Root)") +
-  geom_label(aes(x = 3.2, y = 25,
+  geom_label(aes(x = 3.2, y = 40,
                    label = paste("Kruskal-Wallis Test p-value:",
                                  signif(kruskal_test$p.value, digits = 3))),
                size = 4, label.padding = unit(0.5, "lines")) +
   coord_flip() + 
   ggtitle("Average AMF Colonisation for each Functional Group") +
-  geom_text(aes(label = paste("n = ", sample_size)), hjust = 1, colour = "white") +
+ # geom_text(aes(label = paste("n = ", sample_size)), hjust = 1, colour = "white") +
   theme_pubclean() + 
   scale_fill_Publication()
 
@@ -392,6 +392,19 @@ p_light <- ggplot(biomass_light_data, aes(x=fire_frequency, y=light_uptake)) +
   theme_pubclean()
 
 print(p_light)
+```
+
+# Community Composition Change Test - Do High AMF species increase in relative cover across the fire gradient?
+```{r}
+
+
 
 ```
+
+
+
+
+
+
+
 
