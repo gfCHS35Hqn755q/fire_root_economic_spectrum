@@ -125,7 +125,7 @@ root_traits$site <- as.character(root_traits$site)
 root_traits_summarised <- root_traits %>%
   group_by(site, species) %>%
   summarise_all(mean)
-root_traits_summarised <- select(root_traits_summarised, c("site", "species", "total_root_length_mm", "average_diameter_mm", "volume_mm3"))
+root_traits_summarised <- select(root_traits_summarised, c("site", "species", "total_root_length_mm", "average_diameter_mm", "volume_mm3", "Number.of.Root.Tips", "Branching.frequency.per.mm"))
 
 # process root mass dataset
 root_mass$dry_mass <- root_mass$dry_mass_dish - root_mass$tin_mass
