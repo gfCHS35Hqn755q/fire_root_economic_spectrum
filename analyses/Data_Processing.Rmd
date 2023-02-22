@@ -96,7 +96,7 @@ phosphorous <- read_csv("../data-raw/phosphorous.csv")
 phosphorous <- rename(phosphorous, soil_phosphate = P, site = Burn.Unit, fire_frequency = Fire)
 
 # select only the relevant columns and rows and remove NAs. 20cm depth makes comparable to nitrogen
-phosphorous <- select(phosphorous, site, Deepest, soil_phosphate, fire_frequency)
+phosphorous <- select(phosphorous, site, Deepest, soil_phosphate, fire_frequency, Ca, K)
 phosphorous <- filter(phosphorous, Deepest <= 20)
 phosphorous <- na.omit(phosphorous)
 
@@ -167,11 +167,10 @@ write_csv(root_data, "../data/root_data")
 cover <- read_csv("../data-raw/percent cover.csv")
 
 cover <- cover %>%
-  filter(Year == "2021") %>%
   group_by(Plot) %>%
   mutate(total_cover = sum(MeanPctCover)) %>%
   mutate(relative_cover = MeanPctCover / total_cover * 100) %>%
-  select(c("Plot", "Lifeform", "GenusSpecies", "relative_cover", "Realfire"))
+  select(c("Plot", "Lifeform", "GenusSpecies", "relative_cover", "Realfire", "MeanPctCover"))
 
 cover$Plot <- as.character(cover$Plot)
 cover$species <- cover$GenusSpecies

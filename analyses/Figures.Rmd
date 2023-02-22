@@ -23,6 +23,7 @@ nitrogen_summarised <- read_csv("../data/nitrogen_summarised")
 phosphorous_summarised <- read_csv("../data/phosphorous_summarised")
 phosphorous <- read_csv("../data/phosphorous.csv")
 root_data <- read_csv("../data/root_data")
+community_comp <- read_csv("../data/community_composition.csv")
 ```
 
 # Full Model
@@ -188,6 +189,41 @@ p1_phos <- ggplot(phosphorous, aes(x=fire_frequency, y=soil_phosphate)) +
   theme_pubclean()
 
 print(p1_phos)
+
+# plot soil calcium against fire frequency
+ca_model <- lm(Ca ~ fire_frequency, data = phosphorous)
+p1_ca <- ggplot(phosphorous, aes(x=fire_frequency, y=Ca)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") + 
+  geom_label(aes(x = 0, y = 1.5), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(ca_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(ca_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(ca_model$coef[[2]], 5), 
+                           " \np =",signif(summary(ca_model)$coef[2, 4], 5),
+                           "\nn =" ,nrow(phosphorous))) +
+  ylab(expression(paste("Soil Calcium (", mgCasoil^-1, ")", sep = ""))) +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle("Soil Calcium Against Fire Frequency for All Sites") +
+  theme_pubclean()
+
+print(p1_ca)
+
+k_model <- lm(K ~ fire_frequency, data = phosphorous)
+p1_k <- ggplot(phosphorous, aes(x=fire_frequency, y=K)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") + 
+  geom_label(aes(x = 0.11, y = 1.15), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(k_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(k_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(k_model$coef[[2]], 5), 
+                           " \np =",signif(summary(k_model)$coef[2, 4], 5),
+                           "\nn =" ,nrow(phosphorous))) +
+  ylab(expression(paste("Soil Potassium (", mgKsoil^-1, ")", sep = ""))) +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle("Soil Calcium Against Fire Frequency for All Sites") +
+  theme_pubclean()
+
+print(p1_k)
 ```
 # Plot mycorrhizal colonisation against functional group
 ```{r plot mycorrhizal colonisation functional group}
@@ -396,8 +432,193 @@ print(p_light)
 
 # Community Composition Change Test - Do High AMF species increase in relative cover across the fire gradient?
 ```{r}
+species_mycorrhizae <- data_combined %>%
+  group_by(species) %>%
+  summarise(avg_colonisation = mean(mean_colonisation))
+
+# the three species with the highest coverage are A. bracteata, Andropogon gerardii, and Sorghastrum nutans
+
+cover_high_mycorrhizae <- cover %>%
+  filter(species == "Andropogon gerardii" | species == "Amphicarpa bracteata" | species == "Sorghastrum nutans")
+
+# How does cover relate to fire frequency for all 8 studied species?
+cover_poa <- filter(cover, species == "Poa pratensis")
+cover_poa_model <- lm(MeanPctCover ~ fire_frequency, data = cover_poa)
+summary(cover_poa_model)
+
+p_community_poa <- ggplot(cover_poa, aes(x=fire_frequency, y=MeanPctCover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0.6, y = 25), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(cover_poa_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(cover_poa_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(cover_poa_model$coef[[2]], 5), 
+                           " \np =",signif(summary(cover_poa_model)$coef[2, 4], 5),
+                           "\nn = ", nrow(cover_poa))) +
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle(expression(paste("Percent Cover Against Fire Frequency for ", italic("Poa pratensis"), " Since 1984"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_poa)
+
+cover_amph <- filter(cover, species == "Amphicarpa bracteata")
+cover_amph_model <- lm(MeanPctCover ~ fire_frequency, data = cover_amph)
+summary(cover_amph_model)
+
+p_community_amph <- ggplot(cover_amph, aes(x=fire_frequency, y=MeanPctCover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0.1, y = 40), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(cover_amph_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(cover_amph_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(cover_amph_model$coef[[2]], 5), 
+                           " \np =",signif(summary(cover_amph_model)$coef[2, 4], 5),
+                           "\nn = ", nrow(cover_amph))) +
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle(expression(paste("Percent Cover Against Fire Frequency for ", italic("Amphicarpa bracteata"), "  1984 - 2021"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_amph)
+
+cover_andr <- filter(cover, species == "Andropogon gerardii")
+cover_andr_model <- lm(MeanPctCover ~ fire_frequency, data = cover_andr)
+summary(cover_andr_model)
+
+p_community_andr <- ggplot(cover_andr, aes(x=fire_frequency, y=MeanPctCover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0.1, y = 20), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(cover_andr_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(cover_andr_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(cover_andr_model$coef[[2]], 5), 
+                           " \np =",signif(summary(cover_andr_model)$coef[2, 4], 5),
+                           "\nn = ", nrow(cover_andr))) +
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle(expression(paste("Percent Cover Against Fire Frequency for ", italic("Andropogon gerardii"), " 1984 - 2021"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_andr)
+
+cover_sorg <- filter(cover, species == "Sorghastrum nutans")
+cover_sorg_model <- lm(MeanPctCover ~ fire_frequency, data = cover_sorg)
+summary(cover_sorg_model)
+
+p_community_sorg <- ggplot(cover_sorg, aes(x=fire_frequency, y=MeanPctCover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0.1, y = 25), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(cover_sorg_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(cover_sorg_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(cover_sorg_model$coef[[2]], 5), 
+                           " \np =",signif(summary(cover_sorg_model)$coef[2, 4], 5),
+                           "\nn = ", nrow(cover_sorg))) +
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle(expression(paste("Percent Cover Against Fire Frequency for ", italic("Sorghastrum nutans"), " 1984 - 2021"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_sorg)
+
+cover_ascl <- filter(cover, species == "Asclepias tuberosa")
+cover_ascl_model <- lm(MeanPctCover ~ fire_frequency, data = cover_ascl)
+summary(cover_ascl_model)
+
+p_community_ascl <- ggplot(cover_ascl, aes(x=fire_frequency, y=MeanPctCover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0.1, y = 10), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(cover_ascl_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(cover_ascl_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(cover_ascl_model$coef[[2]], 5), 
+                           " \np =",signif(summary(cover_ascl_model)$coef[2, 4], 5),
+                           "\nn = ", nrow(cover_ascl))) +
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle(expression(paste("Percent Cover Against Fire Frequency for ", italic("Asclepias tuberosa"), " 1984 - 2021"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_ascl)
+
+cover_panic <- filter(cover, species == "Panicum perlongum")
+cover_panic_model <- lm(MeanPctCover ~ fire_frequency, data = cover_panic)
+summary(cover_panic_model)
+
+p_community_panic <- ggplot(cover_panic, aes(x=fire_frequency, y=MeanPctCover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0.1, y = 10), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(cover_panic_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(cover_panic_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(cover_panic_model$coef[[2]], 5), 
+                           " \np =",signif(summary(cover_panic_model)$coef[2, 4], 5),
+                           "\nn = ", nrow(cover_panic))) +
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle(expression(paste("Percent Cover Against Fire Frequency for ", italic("Panicum perlongum"), " 1984 - 2021"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_panic)
+
+cover_astr <- filter(cover, species == "Aster azureus")
+cover_astr_model <- lm(MeanPctCover ~ fire_frequency, data = cover_astr)
+summary(cover_astr_model)
+
+p_community_astr <- ggplot(cover_astr, aes(x=fire_frequency, y=MeanPctCover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0, y = 7.5), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(cover_astr_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(cover_astr_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(cover_astr_model$coef[[2]], 5), 
+                           " \np =",signif(summary(cover_astr_model)$coef[2, 4], 5),
+                           "\nn = ", nrow(cover_astr))) +
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle(expression(paste("Percent Cover Against Fire Frequency for ", italic("Aster azureus"), " 1984 - 2021"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_astr)
 
 
+relevant_species_cover <-  filter(cover, species == "Andropogon gerardii" | species == "Amphicarpa bracteata" | species == "Sorghastrum nutans" | species == "Poa pratensis" | species == "Urtica dioica" | species == "Asclepias tuberosa" | species == "Sorghastrum nutans" | species == "Panicum perlongum")
+
+p_community_comp <- ggplot(relevant_species_cover, aes(x=fire_frequency, y=MeanPctCover, colour = species)) + 
+  geom_point()  + 
+  ylab("Cover (%)") +
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ggtitle("Percent Cover Against Fire Frequency for Species with High AMF Colonisation, Since 1984") +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_comp)
+
+community_model <- lm(fire_effect_cover ~ average_colonisation, data = community_comp)
+p_community_comp <- ggplot(community_comp, aes(x=average_colonisation, y=fire_effect_cover)) + 
+  geom_point() + 
+  stat_smooth(method = "lm") +
+  geom_label(aes(x = 0, y = 15), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(community_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(community_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(community_model$coef[[2]], 5), 
+                           " \np =",signif(summary(community_model)$coef[2, 4], 5),
+                           "\nn = 6")) +
+  ylab("Increase in percent cover / fire frequency") +
+  xlab("Average AMF Colonisation") + 
+  ggtitle(expression(paste("Relationship between increase in percent cover per fire frequency and average AMF colonisation"))) +
+  theme_pubclean() +
+  scale_colour_Publication()
+
+print(p_community_comp)
 
 ```
 
