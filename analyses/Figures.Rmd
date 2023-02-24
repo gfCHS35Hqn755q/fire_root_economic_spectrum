@@ -178,7 +178,7 @@ p1_phos <- ggplot(phosphorous, aes(x=fire_frequency, y=soil_phosphate)) +
   geom_point() + 
   stat_smooth(method = "lm") + 
   geom_label(aes(x = 0, y = 0.06), hjust = 0, 
-             label = paste("Adj R2 = ",signif(summary(phos_model)$adj.r.squared, 5), 
+             label = paste("Adj R2 = ",signif(summary(phos_model)$adj.r.squared, 5),
                            "\nIntercept =",signif(phos_model$coef[[1]],5 ), 
                            " \nSlope =",signif(phos_model$coef[[2]], 5), 
                            " \np =",signif(summary(phos_model)$coef[2, 4], 5),
@@ -220,7 +220,7 @@ p1_k <- ggplot(phosphorous, aes(x=fire_frequency, y=K)) +
                            "\nn =" ,nrow(phosphorous))) +
   ylab(expression(paste("Soil Potassium (", mgKsoil^-1, ")", sep = ""))) +
   xlab("Fire Frequency (Number of Fires / Year)") + 
-  ggtitle("Soil Calcium Against Fire Frequency for All Sites") +
+  ggtitle("Soil Potassium Against Fire Frequency for All Sites") +
   theme_pubclean()
 
 print(p1_k)
@@ -407,7 +407,7 @@ print(p3_branching)
 
 
 ```
-
+# Plot light uptake against fire frequency
 ```{r light uptake against fire frequency}
 biomass_light_data$light_uptake <- as.numeric(biomass_light_data$light_uptake)
 biomass_light_data$fire_frequency <- as.numeric(biomass_light_data$fire_frequency)
@@ -602,19 +602,12 @@ p_community_comp <- ggplot(relevant_species_cover, aes(x=fire_frequency, y=MeanP
 
 print(p_community_comp)
 
-community_model <- lm(fire_effect_cover ~ average_colonisation, data = community_comp)
-p_community_comp <- ggplot(community_comp, aes(x=average_colonisation, y=fire_effect_cover)) + 
+community_model <- lm(percent_change ~ average_colonisation, data = community_comp)
+p_community_comp <- ggplot(community_comp, aes(x=average_colonisation, y=percent_change)) + 
   geom_point() + 
-  stat_smooth(method = "lm") +
-  geom_label(aes(x = 0, y = 15), hjust = 0, 
-             label = paste("Adj R2 = ",signif(summary(community_model)$adj.r.squared, 5), 
-                           "\nIntercept =",signif(community_model$coef[[1]],5 ), 
-                           " \nSlope =",signif(community_model$coef[[2]], 5), 
-                           " \np =",signif(summary(community_model)$coef[2, 4], 5),
-                           "\nn = 6")) +
   ylab("Increase in percent cover / fire frequency") +
   xlab("Average AMF Colonisation") + 
-  ggtitle(expression(paste("Relationship between increase in percent cover per fire frequency and average AMF colonisation"))) +
+  ggtitle("Relationship between percent change in cover due to fire frequency and average AMF colonisation") +
   theme_pubclean() +
   scale_colour_Publication()
 

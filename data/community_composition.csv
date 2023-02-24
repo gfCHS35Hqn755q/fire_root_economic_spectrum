@@ -1,7 +1,7 @@
-﻿Species,average_colonisation,fire_effect_cover
-Poa pratensis,21.15,-5.7861
-Amphicarpa bracteata,42.32,7.8783
-Andropogon gerardii,43.47,19.569
-Sorghastrum nutans,40,8.6375
-Asclepias tuberosa,8.33,3.1549
-Aster azureus,3.75,2.9095
+﻿Species,average_colonisation,fire_effect_cover,cover_f_0,cover_f_0.8,percent_change
+Poa pratensis,21.15,-5.7861,8.653,4.024,-53.5
+Amphicarpa bracteata,42.32,7.8783,10.569,16.592,59.63
+Andropogon gerardii,43.47,19.569,1.151,19.569,1360.01
+Sorghastrum nutans,40,8.6375,,,180.33
+Asclepias tuberosa,8.33,3.1549,,,236.9
+Aster azureus,3.75,2.9095,,,73.65
