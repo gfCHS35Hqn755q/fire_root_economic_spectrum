@@ -11,6 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 library(ggpubr)
+library(scales)
+library(gridExtra)
 source("../R/publication_theme.R")
 ```
 
@@ -40,15 +42,14 @@ anova(fit_full)
 ```{r}
 species_count <- data.frame(table(data_combined$species))
 species_count <- species_count[order(species_count$Freq), ]
-range_fire_frequency <- c(1, 1, 1, 1, 1, 2, 2, 4)
+functional_group <- factor(c("non-legume forb", "non-legume forb", "grass", "grass", "non-legume forb", "grass", "legume", "grass"))
 
-species_samples <- ggplot(data = species_count, aes(x = reorder(Var1, Freq), y = Freq, fill = range_fire_frequency)) +
-  geom_bar(stat = "identity") +
+species_samples <- ggplot(data = species_count, aes(x = reorder(Var1, Freq), y = Freq)) +
+  geom_bar(stat = "identity", aes(fill = functional_group)) +
   coord_flip() + 
   ylab("Number of samples") +
   xlab("Species") +
-  labs(fill = "Number of fire \nfrequencies (max = 6)") +
-  scale_fill_gradient(low = "light blue", high = "dark blue", limits = c(0, 6)) +
+  scale_fill_manual(values = c("#386cb0", "#fdb462","#7fc97f")) +
   ggtitle("Number of Samples and Fire Frequencies for Each Species") +
   theme_pubclean()
 print(species_samples)
@@ -59,7 +60,7 @@ print(species_samples)
 # general model
 fit_all <- lm(mean_colonisation ~ fire_frequency, data = data_combined)
 p1_all <- ggplot(data_combined, aes(x=fire_frequency, y=mean_colonisation)) + 
-  geom_point() + 
+  geom_point(size = 3) + 
   stat_smooth(method = "lm") + 
   geom_label(aes(x = 0, y = 60), hjust = 0, 
              label = paste("Adj R2 = ",signif(summary(fit_all)$adj.r.squared, 5), 
@@ -116,7 +117,7 @@ print(p1_amph)
 data_grass <- filter(data_combined, functional_group == "grass")
 fit_grass <- lm(mean_colonisation ~ fire_frequency, data = data_grass)
 p1_grass <- ggplot(data_grass, aes(x=fire_frequency, y=mean_colonisation)) + 
-  geom_point() + 
+  geom_point(size = 3) + 
   stat_smooth(method = "lm") + 
   geom_label(aes(x = 0., y = 50), hjust = 0, 
              label = paste("Adj R2 = ",signif(summary(fit_grass)$adj.r.squared, 5), 
@@ -150,6 +151,22 @@ p1_amph_poa <- ggplot(data_amph_poa, aes(x=fire_frequency, y=mean_colonisation, 
     theme_pubclean() + 
     scale_colour_Publication()
 print(p1_amph_poa)
+
+# Plot all successful fits on one plot
+p_myc_suc <- ggplot() + 
+  geom_point(data = data_grass, aes(x = fire_frequency, y = mean_colonisation, col = "Grasses")) + 
+  geom_point(data = data_amph, aes(x = fire_frequency, y = mean_colonisation, col = "Amphicarpa bracteata")) +
+  geom_point(data = data_poa, aes(x = fire_frequency, y = mean_colonisation, col = "Poa pratensis")) +
+  geom_smooth(method = "lm", data = data_amph, aes(x = fire_frequency, y = mean_colonisation), colour= "#386cb0", se = FALSE) +
+  geom_smooth(method = "lm", data = data_poa, aes(x = fire_frequency, y= mean_colonisation), colour= "#fdb462", se = FALSE) + 
+  geom_smooth(method = "lm", data = data_grass, aes(x = fire_frequency, y = mean_colonisation), colour = "#7fc97f", se = FALSE) +
+  xlab("Fire Frequency (Number of Fires / Year)") +
+  scale_color_manual(name="Dataset", values=c("#386cb0","#fdb462","#7fc97f"), labels=c("Amphicarpa bracteata","Poa pratensis", "Grasses")) +
+  theme_pubclean() +
+  ggtitle("Relationship Between AMF Colonisation and Fire Frequency") +
+  ylab("Average mycorrhizal colonisation (% of root)")
+print(p_myc_suc)
+
 ```
 
 # Plot relationship between soil nutrients and fire frequency from publications
@@ -224,6 +241,27 @@ p1_k <- ggplot(phosphorous, aes(x=fire_frequency, y=K)) +
   theme_pubclean()
 
 print(p1_k)
+
+#Create a plot for filtered_nitrogen
+p_nitrogen <- ggplot(filtered_nitrogen, aes(x = fire_frequency, y = TotalINmgperg)) + 
+  geom_point(col = "#386cb0", alpha = 0.3) + 
+  geom_smooth(method = "lm", col = "#386cb0") + 
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ylab("Soil Nitrogen (mg per g of soil)") + 
+  theme_pubclean() +
+  ggtitle("Relationship Between Soil Nitrogen and Fire Frequency")
+
+#Create a plot for filtered_phosphorous
+p_phosphorous <- ggplot(filtered_phosphorous, aes(x = fire_frequency, y = soil_phosphate * 0.01)) + 
+  geom_point(col = "#fdb462", alpha = 0.3) + 
+  geom_smooth(method = "lm", col = "#fdb462") + 
+  xlab("Fire Frequency (Number of Fires / Year)") + 
+  ylab("Soil Phosphorus (mg per g of soil)") + 
+  theme_pubclean() + 
+  ggtitle("Relationship Between Soil Phosphorus and Fire Frequency")
+
+
+
 ```
 # Plot mycorrhizal colonisation against functional group
 ```{r plot mycorrhizal colonisation functional group}
@@ -293,7 +331,7 @@ summary(SRL_model)
 
 SRL_model <- lm(SRL ~ fire_frequency, data = root_data)
 p3_SRL <- ggplot(root_data, aes(x=fire_frequency, y=SRL)) + 
-  geom_point() + 
+  geom_point(size = 3) + 
   stat_smooth(method = "lm") + 
   ylab(expression(paste("Specific Root Length (", mg^-1, ")"))) +
   xlab("Fire Frequency (Number of Fires / Year)") + 
@@ -305,7 +343,7 @@ print(p3_SRL)
 
 SRL_grass_model <- lm(SRL ~ fire_frequency, data = grass_root_data)
 p3_SRL_grass <- ggplot(grass_root_data, aes(x=fire_frequency, y=SRL)) + 
-  geom_point() + 
+  geom_point(size =) + 
   stat_smooth(method = "lm") + 
   geom_label(aes(x = 0.6, y = 50), hjust = 0, 
              label = paste("Adj R2 = ",signif(summary(SRL_grass_model)$adj.r.squared, 5), 
@@ -334,7 +372,13 @@ summary(RTD_model)
 
 RTD_model <- lm(RTD ~ fire_frequency, data = root_data)
 p3_RTD <- ggplot(root_data, aes(x=fire_frequency, y=RTD)) + 
-  geom_point() + 
+  geom_point(size = 3) + 
+  geom_label(aes(x = 0, y = 0.0008), hjust = 0, 
+             label = paste("Adj R2 = ",signif(summary(RTD_model)$adj.r.squared, 5), 
+                           "\nIntercept =",signif(RTD_model$coef[[1]],5 ), 
+                           " \nSlope =",signif(RTD_model$coef[[2]], 5), 
+                           " \np =",signif(summary(RTD_model)$coef[2, 4], 5),
+                           "\nn = 18")) +
   stat_smooth(method = "lm") + 
   ylab(expression(paste("Root Tissue Density (", cm^3*"g"^{-1}, ")"))) +
   xlab("Fire Frequency (Number of Fires / Year)") +
@@ -357,7 +401,7 @@ summary(diam_model)
 
 diam_model <- lm(average_diameter_mm ~ fire_frequency, data = root_data)
 p3_diam <- ggplot(root_data, aes(x=fire_frequency, y=average_diameter_mm)) + 
-  geom_point() + 
+  geom_point(size = 3) + 
   stat_smooth(method = "lm") +
   ylab("Average Root Diameter (mm)") +
   xlab("Fire Frequency (Number of Fires / Year)") + 
@@ -371,7 +415,7 @@ print(p3_diam)
 
 tips_model <- lm(Number.of.Root.Tips ~ fire_frequency, data = root_data)
 p3_tips <- ggplot(root_data, aes(x=fire_frequency, y=Number.of.Root.Tips)) +
-  geom_point() + 
+  geom_point(size = 3) + 
   stat_smooth(method = "lm") + 
     geom_label(aes(x = 0.6, y = 800), hjust = 0, 
              label = paste("Adj R2 = ",signif(summary(tips_model)$adj.r.squared, 5), 
@@ -389,7 +433,7 @@ print(p3_tips)
 
 branching_model <- lm(Branching.frequency.per.mm ~ fire_frequency, data = root_data)
 p3_branching <- ggplot(root_data, aes(x=fire_frequency, y=Branching.frequency.per.mm)) +
-  geom_point() + 
+  geom_point(size = 3) + 
   stat_smooth(method = "lm") + 
   geom_label(aes(x = 0.4, y = 0.04), hjust = 0, 
              label = paste("Adj R2 = ",signif(summary(branching_model)$adj.r.squared, 5), 
@@ -414,7 +458,7 @@ biomass_light_data$fire_frequency <- as.numeric(biomass_light_data$fire_frequenc
 
 light_model <- lm(light_uptake ~ fire_frequency, data = biomass_light_data)
 p_light <- ggplot(biomass_light_data, aes(x=fire_frequency, y=light_uptake)) + 
-  geom_point() + 
+  geom_point(size = 3) + 
   stat_smooth(method = "lm") + 
   geom_label(aes(x = -0, y = 0.3), hjust = 0, 
              label = paste("Adj R2 = ",signif(summary(light_model)$adj.r.squared, 5), 
