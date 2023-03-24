@@ -37,7 +37,7 @@ anova(fit_full)
 #anova(step_model)
 ```
 
-# Plot number of species
+# Plot number of species and functional group comparisons
 ```{r}
 species_count <- data.frame(table(data_combined$species))
 species_count <- species_count[order(species_count$Freq), ]
@@ -50,42 +50,57 @@ species_samples <- ggplot(data = species_count, aes(x = reorder(Var1, Freq), y =
   xlab("Species") +
   scale_fill_manual(values = c("#386cb0", "#fdb462","#7fc97f")) +
   ggtitle("Number of Samples and Fire Frequencies for Each Species") +
-  theme_pubclean()
+  geom_signif() +
+  theme_minimal()
 print(species_samples)
 
 
 AMF_functional_groups <- ggplot(data = data_combined, aes(x = functional_group, y = mean_colonisation)) +
   geom_boxplot(aes(fill = functional_group)) +
+  geom_point(size = 3, alpha = 0.6) +
   ylab("Mean Colonisation") +
   xlab("Functional Group") +
   scale_fill_manual(values = c("#386cb0", "#fdb462","#7fc97f")) +
   ggtitle("Comparison of Mean Colonisation Between Functional Groups") +
+  geom_signif(comparisons = list(c("grass", "legume"), c("grass", "non-legume forb"), c("legume", "non-legume forb")), map_signif_level = TRUE, textsize = 5) +
   theme_minimal()
 
 print(AMF_functional_groups)
 
 # geom_signif(comparisons = list(c("grass", "legume"), c("grass", "non-legume forb"), c("legume", "non-legume forb")), map_signif_level = TRUE, textsize = 5) +
 
-SRL_functional_groups <- ggplot(data = data_combined, aes(x = functional_group, y = SRL)) +
+SRL_functional_groups <- ggplot(data = root_data, aes(x = functional_group, y = SRL)) +
   geom_boxplot(aes(fill = functional_group)) +
+  geom_point(size = 3, alpha = 0.6) +
   ylab("SRL") +
   xlab("Functional Group") +
   scale_fill_manual(values = c("#386cb0", "#fdb462","#7fc97f")) +
   ggtitle("Comparison of SRL Between Functional Groups") +
-  geom_signif(comparisons = list(c("grass", "legume"), c("grass", "non-legume forb"), c("legume", "non-legume forb")), map_signif_level = TRUE, textsize = 5) +
+  geom_signif(comparisons = list(c("grass", "legume")), map_signif_level = TRUE, textsize = 5) +
+  geom_signif() +
   theme_minimal()
 
 print(SRL_functional_groups)
 
-diam_functional_groups <- ggplot(data = data_combined, aes(x = functional_group, y = average_diameter_mm)) +
+diam_functional_groups <- ggplot(data = root_data, aes(x = functional_group, y = average_diameter_mm)) +
   geom_boxplot(aes(fill = functional_group)) +
+  geom_point(size = 3, alpha = 0.6) +
   ylab("Average Diameter") +
   xlab("Functional Group") +
   scale_fill_manual(values = c("#386cb0", "#fdb462","#7fc97f")) +
   ggtitle("Comparison of Average Root Diameter Between Functional Groups") +
+  geom_signif(comparisons = list(c("grass", "legume")), map_signif_level = TRUE, textsize = 5) +
   theme_minimal()
 
 print(diam_functional_groups)
+
+root_SRL <- root_data
+
+kruskal.test(SRL ~ functional_group, data = root_data)
+
+kruskal.test(mean_colonisation ~ functional_group, data = data_combined)
+
+kruskal.test(average_diameter_mm ~ functional_group, data = root_data)
 
 ```
 
@@ -101,6 +116,8 @@ p1_all <- ggplot(data_combined, aes(x=fire_frequency, y=mean_colonisation, colou
   theme_minimal() + 
   scale_colour_Publication()
 print(p1_all)
+
+## General model diagnostic plot
 
 glm_myc_all <- glm(mean_colonisation ~ fire_frequency, data = data_combined, family = inverse.gaussian(link = "identity"))
 print(glm_myc_all)
@@ -166,6 +183,9 @@ p1_grass <- ggplot(data_grass, aes(x=fire_frequency, y=mean_colonisation)) +
     theme_minimal() + 
   scale_colour_manual(values = c("#386cb0"))
 print(p1_grass)
+
+plot(fit_grass)
+
 
 
 # Plot for Poa pratensis and Amphicarpa bracteata
@@ -359,6 +379,7 @@ summary(SRL_legume_model)
 SRL_model <- lm(SRL ~ fire_frequency, data = root_data)
 summary(SRL_model)
 
+root_data$fire_frequency <- as.numeric(root_data$fire_frequency)
 
 SRL_model <- lm(SRL ~ fire_frequency, data = root_data)
 p3_SRL <- ggplot(root_data, aes(x=fire_frequency, y=SRL, colour = functional_group)) + 
@@ -394,6 +415,8 @@ summary(diam_legume_model)
 
 diam_model <- lm(average_diameter_mm ~ fire_frequency, data = root_data)
 summary(diam_model)
+
+root_data$average_diameter_mm <- as.numeric(root_data$average_diameter_mm)
 
 diam_model <- lm(average_diameter_mm ~ fire_frequency, data = root_data)
 p3_diam <- ggplot(root_data, aes(x=fire_frequency, y=average_diameter_mm, colour = functional_group)) + 
